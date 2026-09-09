@@ -1,0 +1,9 @@
+{
+  "plan": "2026-09-06-bigfile-xdm-WinInetClient.cs.md",
+  "verdict": "READY-WITH-WARNINGS",
+  "ready_for_impl": true,
+  "gaps": [
+    "llm_unreachable"
+  ],
+  "reviewed_at": "2026-09-06T08:50:20.079597+07:00"
+}
