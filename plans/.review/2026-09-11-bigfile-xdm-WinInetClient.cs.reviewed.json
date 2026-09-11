@@ -1,0 +1,11 @@
+{
+  "plan": "2026-09-11-bigfile-xdm-WinInetClient.cs.md",
+  "verdict": "NEEDS-REVISION",
+  "ready_for_impl": false,
+  "gaps": [
+    "**Structural analysis is empty but objectives claim derivation from it.** The plan states \"objectives are derived from structural analysis\" yet `_(no structural signals detected)_` and `objectives=0` \u2014 the 12 objectives are generic filler (9 identical \"Hardening pass N\" entries with no file-specific targets), not anchored to any actual code symbols, functions, or extraction points.",
+    "**No concrete extraction targets.** OBJ-003 aims to shrink 1,797 lines to \u2264898 but names zero functions/classes/code blocks to extract; the reduction has no line-anchored or symbol-anchored plan behind it. The \"Top imports (sample)\" is also empty.",
+    "**Missing required plan fields.** Structural check returns `has_header=None`, `has_imports=None`, `has_why=None`, `has_dod=None`, `has_security=None` \u2014 the plan lacks the section markers/format the auditor expects, despite having prose sections with similar names."
+  ],
+  "reviewed_at": "2026-09-11T12:01:03.104779+07:00"
+}

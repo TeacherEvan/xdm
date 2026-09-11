@@ -129,3 +129,15 @@ derived from the structural signals above — they name concrete extractions
   its next tick.
 - implementer: `cron_surgical_impl.py` will pick this plan up once the reviewer
   marks it `READY` or `READY-WITH-WARNINGS`.
+
+
+## REVIEW 2026-09-11T12:01:03.104122+07:00
+
+**Verdict:** `NEEDS-REVISION`
+
+**Structural check:** objectives=12 file_header=✓ imports=✓ why=✓ dod=✓ security=✓
+
+**Gaps:**
+1. **Structural analysis is empty but objectives claim derivation from it.** The plan states "objectives are derived from structural analysis" yet `_(no structural signals detected)_` and `objectives=0` — the 12 objectives are generic filler (9 identical "Hardening pass N" entries with no file-specific targets), not anchored to any actual code symbols, functions, or extraction points.
+2. **No concrete extraction targets.** OBJ-003 aims to shrink 1,797 lines to ≤898 but names zero functions/classes/code blocks to extract; the reduction has no line-anchored or symbol-anchored plan behind it. The "Top imports (sample)" is also empty.
+3. **Missing required plan fields.** Structural check returns `has_header=None`, `has_imports=None`, `has_why=None`, `has_dod=None`, `has_security=None` — the plan lacks the section markers/format the auditor expects, despite having prose sections with similar names.
