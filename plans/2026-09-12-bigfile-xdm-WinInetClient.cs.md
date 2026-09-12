@@ -129,3 +129,15 @@ derived from the structural signals above — they name concrete extractions
   its next tick.
 - implementer: `cron_surgical_impl.py` will pick this plan up once the reviewer
   marks it `READY` or `READY-WITH-WARNINGS`.
+
+
+## REVIEW 2026-09-12T15:02:25.465351+07:00
+
+**Verdict:** `NEEDS-REVISION`
+
+**Structural check:** objectives=12 file_header=✓ imports=✓ why=✓ dod=✓ security=✓
+
+**Gaps:**
+1. **Language/tooling mismatch**: The target is a C# file (`WinInetClient.cs`, 1,797 lines) but every objective is written for TypeScript/JavaScript — `pnpm dlx knip/ts-prune`, `index.ts` barrels, `render block`, `named sub-components`, Next.js gate. None of these tools or concepts apply to C#; the plan would produce nonsensical edits.
+2. **Zero structural signal, yet 12 objectives**: The structural analysis returned `objectives=0`, `has_imports=None`, `has_header=None`, `has_dod=None`, `has_security=None` — nothing was extracted. Despite this, the plan invents 12 objectives out of which 9 (OBJ-004 through OBJ-012) are byte-identical "Hardening pass N" filler with no differentiation, no specific target, and no concrete acceptance criteria beyond "no `any` added" (a TypeScript concern, irrelevant to C#).
+3. **Unverified DoD pipeline**: The Definition of Done mandates `pnpm run type-check && pnpm run lint && pnpm run test && pnpm run build` without first confirming these scripts exist in the repo or are appropriate for a C# project. The plan prescribes a pipeline it has not inspected.
