@@ -1,0 +1,16 @@
+{
+  "plan": "2026-09-05-bigfile-xdm-WinInetClient.cs.md",
+  "verdict": "READY-WITH-WARNINGS",
+  "started_at": "2026-09-12T21:27:36.574775+07:00",
+  "duration_s": 194.6,
+  "result": {
+    "returncode": 0,
+    "stdout_tail": "t lines, all blank. Zero references anywhere else in the repo (`grep -rn 'WinInetClient' app/` returns 0 hits outside the file). It is not compiled, not wired, not used.\n\n2. **Toolchain mismatch.** The plan prescribes TypeScript/JavaScript tooling (`pnpm dlx knip/ts-prune`, `index.ts` barrels, `render block`, `named sub-components`, Next.js gate `pnpm run type-check && lint && test && build`) for a C# project. The repo is .NET \u2014 `dotnet 10.0.112` is the actual toolchain. None of the plan's tooling applies.\n\n3. **Generic filler objectives.** 12 objectives, 9 of which (OBJ-004 through OBJ-012) are byte-identical \"Hardening pass N\" entries with no file-specific targets, no concrete extraction points, no `any`-type concerns relevant to C#. The structural analysis section is empty (`_(no structural signals detected)_`).\n\n4. **Prior reviews confirm this.** The 2026-09-11 and 2026-09-12 review JSONs both flag `NEEDS-REVISION` with the same findings: empty structural analysis, TS-only tooling for a C# file, unverified DoD pipeline. The 09-05 plan shares the same content as 09-06 through 09-10 (all 6,589 bytes, same 12 objectives).\n\n5. **Stuck prior run.** PID 4162064 (`cron_surgical_impl.py`) is still running from a prior session, holding the `in_progress` marker.\n\n**What I did:**\n- Scanned plans (9 daily variants of the same broken plan, 09-04 through 09-12)\n- Verified the file is dead commented-out code with no references\n- Confirmed the repo is .NET, not TypeScript\n- Gitignored `docs/.scratch-audit/` per skill directive\n- Wrote 17-section `debrief.md` to `docs/.scratch-audit/debrief-2026-09-12.md`\n\n**What I did NOT do:** No source code modified. No commits. No push (PUSH=0). No fabricated work.\n\n**Open items requiring your decision:**\n- (a) Re-author the plan with real C#-anchored objectives targeting live code, or\n- (b) Delete the dead `WinInetClient.cs` file and archive all 9 plans as \"dead code removed\", or\n- (c) Provide a different target file/plan.\n\nWhich direction?",
+    "stderr_tail": "\u26a0 A previous `hermes update` pulled new code but did not restart running gateways.\n  Gateways may still be serving pre-update modules (mixed sys.modules).\n  Run `hermes update` or `hermes gateway restart`.\nhermes -z: ignoring unknown --toolsets entries: git",
+    "push": {
+      "pushed": false,
+      "reason": "PUSH_DISABLED"
+    }
+  },
+  "completed_at": "2026-09-12T21:30:51.209967+07:00"
+}
