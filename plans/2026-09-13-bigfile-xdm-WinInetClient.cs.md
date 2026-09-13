@@ -129,3 +129,15 @@ derived from the structural signals above — they name concrete extractions
   its next tick.
 - implementer: `cron_surgical_impl.py` will pick this plan up once the reviewer
   marks it `READY` or `READY-WITH-WARNINGS`.
+
+
+## REVIEW 2026-09-13T14:52:31.141133+07:00
+
+**Verdict:** `NEEDS-REVISION`
+
+**Structural check:** objectives=12 file_header=✓ imports=✓ why=✓ dod=✓ security=✓
+
+**Gaps:**
+1. **Structural analysis is empty but 12 objectives were generated.** The plan reports `objectives=0 has_header=None has_imports=None has_why=None has_dod=None has_security=None` — zero structural signals — yet produced 12 objectives. The objectives are not file-derived; they are generic template filler, contradicting the plan's own claim of being "v2 — file-aware."
+2. **Toolchain mismatch.** The plan targets a `.cs` (C#) file but invokes TypeScript/Node.js tooling throughout: `knip`, `ts-prune`, `pnpm dlx`, `index.ts` barrels, `pnpm run build/test/e2e/type-check/lint`, and a "Next.js full gate." No .NET tooling (`dotnet`, `MSBuild`, `csc`) appears anywhere. Every objective is premised on a TS/JS codebase that does not match the target file.
+3. **OBJ-004 through OBJ-012 are nine identical "Hardening pass N" entries.** Same target, same acceptance ("stricter types... no `any` added"), same validation ("type-check"), same evidence ("type diff") — only the digit changes. This is the exact generic N-slice filler the plan header claims to have abandoned. No differentiation, no concrete symbols, no line anchors.
